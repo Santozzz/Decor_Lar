@@ -3,7 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import {createBrowserRouter, RouterProvider, Route} from "react-router-dom"
-import Tela_Inicial_SISTEMA from './routes/SISTEMA/Tela_Inicial_SISTEMA.jsx'
+
+// SISTEMA
+import PRODUTOS_SISTEMA from './routes/SISTEMA/PRODUTOS_SISTEMA.jsx'
+import ADD_PROD_SISTEMA from './routes/SISTEMA/ADD_PROD_SISTEMA.jsx'
+import PEDIDOS_SISTEMA from './routes/SISTEMA/PEDIDOS_SISTEMA.jsx'
+
+// CLIENTE
 import Tela_Inicial_CLIENTE from './routes/CLIENTE/Tela_Inicial_CLIENTE.jsx'
 
 const router = createBrowserRouter([
@@ -11,10 +17,22 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+
+  // SISTEMA
   {
     path: "Produtos",
-    element: <Tela_Inicial_SISTEMA />,
+    element: <PRODUTOS_SISTEMA />,
   },
+  {
+    path: "AdicionarProdutos",
+    element: <ADD_PROD_SISTEMA />,
+  },
+  {
+    path: "Pedidos",
+    element: <PEDIDOS_SISTEMA />,
+  },
+
+  // CLIENTE
   {
     path: "Home",
     element: <Tela_Inicial_CLIENTE />,

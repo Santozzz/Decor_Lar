@@ -1,12 +1,15 @@
 import React from 'react'
 import Navbar_SIS from './../../assets/components/SISTEMA/Navbar_SIS.jsx'
 
-const Contact = () => {
+
+function ADD_PROD_SISTEMA() {
   return (
     <div>
-      <Navbar_SIS />
+        <Navbar_SIS />
+        ADD_PROD_SISTEMA
+
     </div>
   )
 }
 
-export default Contact
+export default ADD_PROD_SISTEMA
