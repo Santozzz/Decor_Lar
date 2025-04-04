@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import {createBrowserRouter, RouterProvider, Route} from "react-router-dom"
-import Contact from './routes/SISTEMA/Contact.jsx'
+import Tela_Inicial_SISTEMA from './routes/SISTEMA/Tela_Inicial_SISTEMA.jsx'
 
 const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "contact",
-    element: <Contact />,
+    path: "Produtos",
+    element: <Tela_Inicial_SISTEMA />,
   },
 ])
 

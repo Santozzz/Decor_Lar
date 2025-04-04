@@ -1,4 +1,5 @@
 import './assets/styles/default/App.css'
+import './assets/styles/default/Reset.css'
 
 
 function App() {
