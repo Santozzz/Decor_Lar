@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar_SIS from './../../assets/'
 
 const Contact = () => {
   return (
-    <div>Pagina de contato</div>
+    <div>
+      
+    </div>
   )
 }
 
