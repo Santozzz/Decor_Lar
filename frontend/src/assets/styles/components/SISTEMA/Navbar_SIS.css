@@ -1,13 +1,15 @@
-.navbar-row{
+/* Estilos gerais */
+.navbar-row {
     position: fixed;
     width: 100%;
     height: 10vh;
     background-color: #252321;
     display: flex;
     justify-content: center;
+    z-index: 1000; /* Mantém a navbar sobre outros elementos */
 }
 
-.space{
+.space {
     width: 90%;
     height: 100%;
     display: flex;
@@ -15,29 +17,30 @@
     align-items: center;
 }
 
-.space .logo{
+.space .logo {
     display: flex;
-    width: 10%;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
-.space .logo p{
+.space .logo p {
     font-weight: 600;
     font-size: 20px;
     color: #ffffff;
 }
 
-.space .logo img{
+.space .logo img {
     width: 40px;
 }
 
 .space i {
     color: #ffffff;
     font-size: 18px;
+    cursor: pointer;
 }
 
-.navbar-column{
+/* Sidebar */
+.navbar-column {
     position: fixed;
     margin-top: 10vh;
     height: 90vh;
@@ -47,9 +50,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease-in-out;
 }
 
-.navlist{
+/* Lista de navegação */
+.navlist {
     width: 90%;
     height: 90%;
     display: flex;
@@ -63,21 +68,16 @@
     align-items: center;
     width: 100%;
     height: 8%;
-    background-color: #0000002d;
-    border-radius: 4px;
-    text-transform: uppercase;
-    transition: .5s ease-out;
-    cursor: pointer;
 }
 
-.link p{
+.link p {
     font-weight: 500;
     font-size: 13px;
     color: #ffffff8a;
     transition: .5s ease-out;
 }
 
-.link .icon{
+.link .icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,17 +87,24 @@
     transition: .5s ease-out;
 }
 
-.link .NavLink{
+.link .NavLink {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    background-color: #0000002d;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: .5s ease-out;
+    cursor: pointer;
 }
 
-.navlist .link.active {
-    animation: fadeIn 0.3s ease;
+/* Animação para link ativo */
+.navlist .NavLink.active {
+    animation: fadeIn .5s ease;
     background-color: #0000004d;
-    box-shadow: inset 2px 2px 5px;
+    box-shadow: inset 2px 2px 5px #0000004d;
 }
 
 @keyframes fadeIn {
@@ -109,7 +116,62 @@
     }
 }
 
-.navlist .link.active p,
-.navlist .link.active .icon {
+.navlist .NavLink.active p,
+.navlist .NavLink.active .icon {
     color: #ffffff;
 }
+
+/* Botão do menu hamburguer */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width: 1450px) {
+    .navlist .link{
+        height: 6%;
+    }
+}
+
+/* Sidebar oculta em telas menores e aparece com .open */
+@media screen and (max-width: 1240px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar-column {
+        transform: translateX(-100%);
+        width: 25%;
+
+    }
+
+    .navbar-column.open {
+        transform: translateX(0);
+    }
+}
+@media screen and (max-width: 950px) {
+    .navbar-column {
+        width: 40%;
+
+    }
+}
+@media screen and (max-width: 600px) {
+    .navbar-column {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 385px) {
+    .navbar-column {
+        width: 70%;
+    }
+}
+
+
+
