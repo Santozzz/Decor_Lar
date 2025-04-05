@@ -5,9 +5,9 @@ import App from './App.jsx'
 import {createBrowserRouter, RouterProvider, Route} from "react-router-dom"
 
 // SISTEMA
-import PRODUTOS_SISTEMA from './routes/SISTEMA/PRODUTOS_SISTEMA.jsx'
-import ADD_PROD_SISTEMA from './routes/SISTEMA/ADD_PROD_SISTEMA.jsx'
-import PEDIDOS_SISTEMA from './routes/SISTEMA/PEDIDOS_SISTEMA.jsx'
+import PRODUTOS_SISTEMA from './pages/SISTEMA/PRODUTOS_SISTEMA.jsx'
+import ADD_PROD_SISTEMA from './pages/SISTEMA/ADD_PROD_SISTEMA.jsx'
+import PEDIDOS_SISTEMA from './pages/SISTEMA/PEDIDOS_SISTEMA.jsx'
 
 // CLIENTE
 import Tela_Inicial_CLIENTE from './routes/CLIENTE/Tela_Inicial_CLIENTE.jsx'
