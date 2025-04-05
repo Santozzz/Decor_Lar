@@ -10,7 +10,7 @@ import ADD_PROD_SISTEMA from './pages/SISTEMA/ADD_PROD_SISTEMA.jsx'
 import PEDIDOS_SISTEMA from './pages/SISTEMA/PEDIDOS_SISTEMA.jsx'
 
 // CLIENTE
-import Tela_Inicial_CLIENTE from './routes/CLIENTE/Tela_Inicial_CLIENTE.jsx'
+import Tela_Inicial_CLIENTE from './pages/CLIENTE/Tela_Inicial_CLIENTE.jsx'
 
 const router = createBrowserRouter([
   {
