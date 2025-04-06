@@ -1,12 +1,30 @@
-import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './../../styles/components/SISTEMA/Navbar_SIS.css'
+import React, { useState, useRef, useEffect } from "react"
 
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [notificacoesAbertas, setNotificacoesAbertas] = useState(false)
+    const dropdownRef = useRef()
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
+
+    const toggleNotificacoes = () => {
+        setNotificacoesAbertas(!notificacoesAbertas)
+      }
+    
+      // Fecha o dropdown se clicar fora
+      useEffect(() => {
+        const handleClickFora = (event) => {
+          if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setNotificacoesAbertas(false)
+          }
+        }
+    
+        document.addEventListener("mousedown", handleClickFora)
+        return () => document.removeEventListener("mousedown", handleClickFora)
+      }, [])
 
     return (
         <>
@@ -20,7 +38,15 @@ const Navbar = () => {
                         </button>
                         <p>Decor&Lar</p>
                     </div>
-                    <i class="fa-solid fa-bell"></i>
+                    <div className="notificacao-wrapper" ref={dropdownRef}>
+                        <i className="fa-solid fa-bell" onClick={toggleNotificacoes}></i>
+
+                        {notificacoesAbertas && (
+                          <div className="notificacoes-modal">
+                            
+                          </div>
+                        )}
+                    </div>
                 </div>
             </div>
 

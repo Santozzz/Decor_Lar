@@ -131,6 +131,38 @@
     cursor: pointer;
 }
 
+.notificacao-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .notificacoes-modal {
+    position: absolute;
+    top: 120%; /* um pouco abaixo do sino */
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+  
+  .notificacoes-modal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .notificacoes-modal li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .notificacoes-modal li:last-child {
+    border-bottom: none;
+  }
 
 /* RESPONSIVIDADE */
 

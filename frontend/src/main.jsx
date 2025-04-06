@@ -8,6 +8,8 @@ import {createBrowserRouter, RouterProvider, Route} from "react-router-dom"
 import PRODUTOS_SISTEMA from './pages/SISTEMA/PRODUTOS_SISTEMA.jsx'
 import ADD_PROD_SISTEMA from './pages/SISTEMA/ADD_PROD_SISTEMA.jsx'
 import PEDIDOS_SISTEMA from './pages/SISTEMA/PEDIDOS_SISTEMA.jsx'
+import PrivateRoute from './assets/components/SISTEMA/PrivateRoute.jsx' 
+
 
 // CLIENTE
 import Tela_Inicial_CLIENTE from './pages/CLIENTE/Tela_Inicial_CLIENTE.jsx'
@@ -18,20 +20,25 @@ const router = createBrowserRouter([
     element: <App />,
   },
 
-  // SISTEMA
-  {
+   // ROTAS PROTEGIDAS DO SISTEMA
+   {
     path: "Produtos",
-    element: <PRODUTOS_SISTEMA />,
+    element: (
+        <PRODUTOS_SISTEMA />
+    ),
   },
   {
     path: "AdicionarProdutos",
-    element: <ADD_PROD_SISTEMA />,
+    element: (
+        <ADD_PROD_SISTEMA />
+    ),
   },
   {
     path: "Pedidos",
-    element: <PEDIDOS_SISTEMA />,
+    element: (
+        <PEDIDOS_SISTEMA />
+    ),
   },
-
   // CLIENTE
   {
     path: "Home",
