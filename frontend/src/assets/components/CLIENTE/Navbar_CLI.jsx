@@ -8,22 +8,30 @@ const NavbarCLI = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Lógica para lidar com a pesquisa
     console.log("Pesquisar por:", searchTerm);
-    // Aqui você pode adicionar a lógica de filtragem ou redirecionamento
   };
 
   const handleCustomProductsClick = () => {
-    navigate("/Produto_Personalizado"); // Redireciona para a página de produtos personalizados
+    navigate("/Produto_Personalizado");
   };
 
   return (
     <nav className="navbarCLI">
       <div className="space">
-        {/* Logo */}
-        <div className="logo" onClick={() => navigate("/")}>
-          <p>Decor & Lar</p>
-          {/* Substitua "/logo.png" pelo caminho real do seu logo */}
+        {/* Container para logo e botão (mobile) */}
+        <div className="logo-and-button">
+          {/* Logo */}
+          <div className="logo" onClick={() => navigate("/")}>
+            <p>Decor & Lar</p>
+          </div>
+
+          {/* Botão de Produtos Personalizados (mobile) */}
+          <button
+            className="personalizados mobile-only"
+            onClick={handleCustomProductsClick}
+          >
+            <p>Produto Personalizado</p>
+          </button>
         </div>
 
         {/* Barra de Pesquisa */}
@@ -36,13 +44,12 @@ const NavbarCLI = () => {
           />
           <button type="submit" className="btn-pesquisar">
             <i>Pesquisar</i>
-            {/* Você pode substituir por um ícone de sua biblioteca de ícones */}
           </button>
         </form>
 
-        {/* Botão de Produtos Personalizados */}
+        {/* Botão de Produtos Personalizados (desktop) */}
         <button
-          className="personalizados"
+          className="personalizados desktop-only"
           onClick={handleCustomProductsClick}
         >
           <p>Produto Personalizado</p>
