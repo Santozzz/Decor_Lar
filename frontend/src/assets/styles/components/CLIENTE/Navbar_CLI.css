@@ -72,6 +72,10 @@
     .space {
       flex-direction: column;
       padding: 10px;
+      background-color: #252321;
+      width: 100%;
+      padding-bottom: 30px;
+      
     }
     
     .logo {
@@ -81,10 +85,11 @@
     .pesquisar {
       margin: 10px 0;
       width: 100%;
+
     }
     
     .personalizados {
-      margin-top: 10px;
+      margin-top: 25px;
       width: 100%;
     }
   }
