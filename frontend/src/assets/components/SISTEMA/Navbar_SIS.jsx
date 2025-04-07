@@ -30,8 +30,8 @@ const Navbar = () => {
         <>
             {/* Navbar superior */}
             <div className="navbar-row">
-                <div className="space">
-                    <div className="logo">
+                <div className="espaco">
+                    <div className="log">
                         {/* Botão hamburguer visível a partir de 1240px */}
                         <button className="menu-toggle" onClick={toggleMenu}>
                             <i className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"}`}></i>
