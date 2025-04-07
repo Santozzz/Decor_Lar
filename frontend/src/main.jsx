@@ -13,6 +13,7 @@ import PrivateRoute from './assets/components/SISTEMA/PrivateRoute.jsx'
 
 // CLIENTE
 import Tela_Inicial_CLIENTE from './pages/CLIENTE/Tela_Inicial_CLIENTE.jsx'
+import PROD_PERSONALIZADOS from './pages/CLIENTE/PROD_PERSONALIZADOS.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,14 @@ const router = createBrowserRouter([
   // CLIENTE
   {
     path: "Home",
-    element: <Tela_Inicial_CLIENTE />,
+    element: ( 
+      <Tela_Inicial_CLIENTE />
+    ),
+  },
+  {
+    path: "Produto_Personalizado",
+    element: (<PROD_PERSONALIZADOS />
+    ),
   },
 ])
 
