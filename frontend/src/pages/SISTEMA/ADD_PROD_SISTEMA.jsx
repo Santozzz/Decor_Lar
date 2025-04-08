@@ -84,8 +84,13 @@ function ADD_PROD_SISTEMA() {
             <div className="col">
               <h2 className="ttl-form">Dados do Produto</h2>
               <form className="form">
+                <select className="select-categoria" defaultValue="">
+                  <option value="" disabled>Categorias</option>
+                  <option value="decoracao">Casa & Decoração</option>
+                  <option value="nerd">Nerd</option>
+                  <option value="pet">PET</option>
+                </select>
                 <input type="text" placeholder="Titulo" />
-                <input type="text" placeholder="Categorias" />
                 <input type="text" placeholder="Valor" />
                 <textarea
                   name=""
