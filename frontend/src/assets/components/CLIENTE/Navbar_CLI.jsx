@@ -12,7 +12,7 @@ const NavbarCLI = () => {
   };
 
   const handleCustomProductsClick = () => {
-    navigate("/Produto_Personalizado");
+    navigate("/ProdutoPersonalizado");
   };
 
   return (
@@ -21,7 +21,7 @@ const NavbarCLI = () => {
         {/* Container para logo e botão (mobile) */}
         <div className="logo-and-button">
           {/* Logo */}
-          <div className="logo" onClick={() => navigate("/")}>
+          <div className="logo" onClick={() => navigate("/Home")}>
             <p>Decor & Lar</p>
           </div>
 
