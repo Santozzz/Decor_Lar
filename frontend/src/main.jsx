@@ -48,8 +48,9 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "Produto_Personalizado",
-    element: (<PROD_PERSONALIZADOS />
+    path: "ProdutoPersonalizado",
+    element: (
+    <PROD_PERSONALIZADOS />
     ),
   },
 ])
