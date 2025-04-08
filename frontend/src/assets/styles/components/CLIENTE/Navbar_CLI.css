@@ -53,6 +53,12 @@
   .pesquisar .btn-pesquisar:hover {
     background-color: #9b4d04;
   }
+  .pesquisar .btn-pesquisar i {
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
+  }
   
   .logo {
     cursor: pointer;
@@ -79,6 +85,13 @@
   
   .personalizados:hover {
     background-color: #9b4d04;
+  }
+
+  .personalizados p{
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    white-space: nowrap;
   }
   
   /* Classes para controle de visibilidade */
