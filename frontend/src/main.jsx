@@ -18,7 +18,11 @@ import PROD_PERSONALIZADOS from './pages/CLIENTE/PROD_PERSONALIZADOS.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    
+    element: 
+    <PrivateRoute>
+      <App />
+    </PrivateRoute>,
   },
 
    // ROTAS PROTEGIDAS DO SISTEMA
