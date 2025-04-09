@@ -201,7 +201,11 @@ select{
 }
 
 @media screen and (max-width:1240px){
-    .container{
+    .produto-container{
+        margin-left: 0;
+        width: 100%;
+    }
+    .form-area{
         width: 100%;
     }
     .row{
