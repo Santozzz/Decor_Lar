@@ -5,8 +5,9 @@ import routes from './routes.js';
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(routes);
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(routes);
 
-export default app
+export default app;

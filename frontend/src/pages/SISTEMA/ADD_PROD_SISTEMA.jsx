@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Navbar_SIS from "../../assets/components/SISTEMA/Navbar_SIS.jsx";
 import "./../../assets/styles/pages/SISTEMA/ADD_PROD_SISTEMA.css";
+import axios from 'axios'
 
 function ADD_PROD_SISTEMA() {
   const [mainImg, setMainImg] = useState(null);
@@ -16,11 +17,56 @@ function ADD_PROD_SISTEMA() {
     }
   };
 
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const fileMain = document.getElementById("main-img").files[0];
+    const fileExtra1 = document.getElementById("extra1").files[0];
+    const fileExtra2 = document.getElementById("extra2").files[0];
+  
+    const img1 = fileMain ? await convertToBase64(fileMain) : null;
+    const img2 = fileExtra1 ? await convertToBase64(fileExtra1) : null;
+    const img3 = fileExtra2 ? await convertToBase64(fileExtra2) : null;
+  
+    const titulo = e.target[1].value;
+    const valor = e.target[2].value;
+    const descricao = e.target[3].value;
+    const categoria = e.target[0].value;
+  
+    const produto = {
+      titulo,
+      valor,
+      descricao,
+      categoria,
+      img1,
+      img2,
+      img3
+    };
+  
+    try {
+      const response = await axios.post("http://localhost:5000/produtos", produto);
+      console.log("Produto salvo:", response.data);
+      alert("Produto adicionado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao adicionar produto:", error);
+      alert("Erro ao adicionar produto.");
+    }
+  };
+
   return (
     <div>
       <Navbar_SIS />
       <div className="espaco"></div>
-      <div className="container">
+      <div className="produto-container">
         <div className="form-area">
           <h2 className="ttl">ADICIONAR PRODUTOS</h2>
           <div className="row">
@@ -84,7 +130,7 @@ function ADD_PROD_SISTEMA() {
             </div>
             <div className="col">
               <h2 className="ttl-form">Dados do Produto</h2>
-              <form className="form">
+              <form className="form" onSubmit={handleSubmit}>
                 <select className="select-categoria" defaultValue="">
                   <option value="" disabled>Categorias</option>
                   <option value="decoracao">Casa & Decoração</option>
