@@ -40,17 +40,17 @@ const Personalizados = () => {
       detalhes: formData.detalhes,
       telefone: formData.telefone,
       nome: formData.nome,
-      to_email: 'david.c9ol@gmail.com', // Adicione o email de destino
+      to_email: ' itens.personalizadosDL@gmail.com', // Adicione o email de destino
       from_name: 'Site Decor & Lar', // Nome do remetente
       subject: 'Novo orçamento de produto personalizado' // Assunto do email
     };
   
     emailjs
       .send(
-        "service_tha3z2b",
-        "template_dqz7ynn", 
+        "service_x89rxh9",
+        "template_yls1tem", 
         templateParams, // Use o objeto completo
-        "Yq46QEgYWYCteFhTa"
+        "CZ7gRNRTRh267W0pr",
       )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
