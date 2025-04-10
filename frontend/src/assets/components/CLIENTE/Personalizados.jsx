@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 import "./../../styles/components/CLIENTE/Personalizados.css";
 import imagem from "./../../img/perso.jpg";
 
@@ -7,6 +7,7 @@ const Personalizados = () => {
   const [formData, setFormData] = useState({
     detalhes: "",
     telefone: "",
+    nome:"",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -26,26 +27,35 @@ const Personalizados = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!validatePhone(formData.telefone)) {
       alert("Por favor, insira um número de telefone válido");
       return;
     }
-
+  
     setIsSubmitting(true);
-
-    // Configuração do EmailJS (você precisará criar uma conta em https://www.emailjs.com/)
+  
+    // Objeto completo com todos os dados necessários
+    const templateParams = {
+      detalhes: formData.detalhes,
+      telefone: formData.telefone,
+      nome: formData.nome,
+      to_email: 'david.c9ol@gmail.com', // Adicione o email de destino
+      from_name: 'Site Decor & Lar', // Nome do remetente
+      subject: 'Novo orçamento de produto personalizado' // Assunto do email
+    };
+  
     emailjs
       .send(
-        "seu_service_id", // Substitua pelo seu Service ID
-        "seu_template_id", // Substitua pelo seu Template ID
-        formData,
-        "seu_user_id" // Substitua pelo seu User ID
+        "service_tha3z2b",
+        "template_dqz7ynn", 
+        templateParams, // Use o objeto completo
+        "Yq46QEgYWYCteFhTa"
       )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
         setSubmitStatus("success");
-        setFormData({ detalhes: "", telefone: "" });
+        setFormData({ detalhes: "", telefone: "", nome:"" });
       })
       .catch((err) => {
         console.log("FAILED...", err);
@@ -98,6 +108,18 @@ const Personalizados = () => {
                 />
               </div>
 
+              <div className="form-group">
+                <label htmlFor="nome">NOME</label>
+                <input
+                  id="nome"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                  placeholder="Digite seu nome"
+                />
+              </div>
+
               <button
                 className="btn-enviar"
                 type="submit"
@@ -120,9 +142,10 @@ const Personalizados = () => {
           </div>
         </div>
         <div className="other-products">
-          <button onClick={() => (window.location.href = "/produtos")}>
+          <p onClick={() => (window.location.href = "/Home")}>
             OUTROS PRODUTOS
-          </button>
+          </p>
+          
         </div>
       </div>
     </div>
