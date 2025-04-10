@@ -18,7 +18,7 @@ const Catalogo = () => {
           setProdutos(response.data.map(produto => ({
             id: produto.id || 0,
             titulo: produto.titulo || 'Produto sem nome',
-            preco: Number(produto.preco) || 0, // Garante que preco seja um número
+            valor: Number(produto.valor) || 0, // Garante que preco seja um número
             categoria: produto.categoria || 'outros',
             img1: produto.img1 || '/images/placeholder.jpg',
             img2: produto.img2 || '/images/placeholder.jpg',
@@ -53,10 +53,10 @@ const Catalogo = () => {
   };
 
   // Formatação segura do preço
-  const formatarPreco = (preco) => {
+  const formatarPreco = (valor) => {
     try {
-      return typeof preco === 'number' 
-        ? `R$${preco.toFixed(2)}` 
+      return typeof valor === 'number' 
+        ? `R$${valor.toFixed(2)}` 
         : 'R$0,00';
     } catch {
       return 'R$0,00';
@@ -102,7 +102,7 @@ const Catalogo = () => {
                 />
               </div>
               <h3 className="titulo-produto">{produto.titulo}</h3>
-              <p className="preco-produto">{formatarPreco(produto.preco)}</p>
+              <p className="preco-produto">{formatarPreco(produto.valor)}</p>
               <button className="botao-ver">VER PRODUTO</button>
             </div>
           ))
