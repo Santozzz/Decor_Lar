@@ -4,6 +4,21 @@ import Navbar from "./../../assets/components/SISTEMA/Navbar_SIS.jsx";
 import "./../../assets/styles/pages/SISTEMA/PRODUTOS_SISTEMA.css";
 
 const Produtos = () => {
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/produtos/${id}`);
+      alert("Produto excluído com sucesso!");
+  
+      // Atualiza a lista original removendo o item excluído
+      setProdutos((produtosAnteriores) =>
+        produtosAnteriores.filter((produto) => produto.id !== id)
+      );
+    } catch (error) {
+      console.error("Erro ao excluir produto:", error);
+      alert("Erro ao excluir produto.");
+    }
+  };
+
   const [mostrarFiltros, setMostrarFiltros] = useState(false);
   const [filtroAtivo, setFiltroAtivo] = useState("todos");
   const [produtos, setProdutos] = useState([]);
@@ -114,8 +129,8 @@ const Produtos = () => {
                 <h3 className="titulo-produto">{produto.titulo}</h3>
                 <p className="preco-produto">{formatarPreco(produto.valor)}</p>
                 <div className="crud">
-                  <button className="b">Excluir</button>
-                  <button className="b">Editar</button>
+                <button className="b" onClick={() => handleDelete(produto.id)}>Excluir</button>                  
+                <button className="b">Editar</button>
                 </div>
               </div>
             ))
