@@ -14,6 +14,7 @@ import PrivateRoute from './assets/components/SISTEMA/PrivateRoute.jsx'
 // CLIENTE
 import Tela_Inicial_CLIENTE from './pages/CLIENTE/Tela_Inicial_CLIENTE.jsx'
 import PROD_PERSONALIZADOS from './pages/CLIENTE/PROD_PERSONALIZADOS.jsx'
+import Tela_Detalhes_Produtos from './pages/CLIENTE/Tela_Detalhes_Produtos.jsx'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
     path: "ProdutoPersonalizado",
     element: (
     <PROD_PERSONALIZADOS />
+    ),
+  },
+  {
+    path: "DetalhesProduto",
+    element: (
+    <Tela_Detalhes_Produtos/>
     ),
   },
 ])
