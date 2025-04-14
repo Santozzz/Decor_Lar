@@ -59,7 +59,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "DetalhesProduto",
+    path: "/produto/:id",
     element: (
     <Tela_Detalhes_Produtos/>
     ),

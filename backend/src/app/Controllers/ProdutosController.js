@@ -1,5 +1,6 @@
 import {
   getAllProdutos,
+  getProdutoById,
   addProduto,
   updateProduto,
   deleteProduto
@@ -45,6 +46,20 @@ export default {
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
+  },
+
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+      const produto = await getProdutoById(id);
+      if (!produto) {
+        return res.status(404).json({ error: 'Produto não encontrado' });
+      }
+      res.status(200).json(produto);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
   }
+  
 
 };

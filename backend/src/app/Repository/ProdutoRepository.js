@@ -40,4 +40,16 @@ export async function deleteProduto(id) {
 
   if (error) throw new Error(error.message);
   return data;
+
+}
+
+export async function getProdutoById(id) {
+  const { data, error } = await supabase
+    .from('Produtos')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) throw new Error(error.message);
+  return data;
 }

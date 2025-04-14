@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/components/CLIENTE/Catalogo.css';
 
@@ -8,28 +9,31 @@ const Catalogo = () => {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
         const response = await axios.get('http://localhost:5000/produtos');
-        // Verifica se os dados são válidos antes de atualizar o estado
-        if (Array.isArray(response.data)) {
-          setProdutos(response.data.map(produto => ({
-            id: produto.id || 0,
-            titulo: produto.titulo || 'Produto sem nome',
-            valor: Number(produto.valor) || 0, // Garante que preco seja um número
-            categoria: produto.categoria || 'outros',
-            img1: produto.img1 || '/images/placeholder.jpg',
-            img2: produto.img2 || '/images/placeholder.jpg',
-            imag3: produto.img3 || '/images/placeholder.jpg',
-          })));
-        } else {
-          throw new Error('Formato de dados inválido');
+        
+        if (!response.data || !Array.isArray(response.data)) {
+          throw new Error('Dados recebidos são inválidos');
         }
+
+        const produtosFormatados = response.data.map(produto => ({
+          id: produto.id || Date.now() + Math.random(), // ID único se não existir
+          titulo: produto.titulo || 'Produto sem nome',
+          valor: Number(produto.valor) || 0,
+          categoria: produto.categoria?.toLowerCase() || 'outros',
+          img1: produto.img1 || '/images/placeholder.jpg',
+          img2: produto.img2 || '/images/placeholder.jpg',
+          img3: produto.img3 || '/images/placeholder.jpg',
+        }));
+
+        setProdutos(produtosFormatados);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+        setError(err.response?.data?.message || err.message || 'Erro desconhecido');
         setLoading(false);
         console.error("Erro ao buscar produtos:", err);
       }
@@ -38,12 +42,9 @@ const Catalogo = () => {
     fetchProdutos();
   }, []);
 
-  // Filtrar produtos com verificação adicional
   const produtosFiltrados = filtroAtivo === 'todos' 
     ? produtos 
-    : produtos.filter(produto => 
-        produto.categoria && produto.categoria.toLowerCase() === filtroAtivo.toLowerCase()
-      );
+    : produtos.filter(produto => produto.categoria === filtroAtivo.toLowerCase());
 
   const toggleFiltros = () => setMostrarFiltros(!mostrarFiltros);
   
@@ -52,15 +53,10 @@ const Catalogo = () => {
     setMostrarFiltros(false);
   };
 
-  // Formatação segura do preço
   const formatarPreco = (valor) => {
-    try {
-      return typeof valor === 'number' 
-        ? `R$${valor.toFixed(2)}` 
-        : 'R$0,00';
-    } catch {
-      return 'R$0,00';
-    }
+    return typeof valor === 'number' 
+      ? `R$ ${valor.toFixed(2).replace('.', ',')}` 
+      : 'R$ 0,00';
   };
 
   if (loading) return <div className="loading">Carregando produtos...</div>;
@@ -89,7 +85,7 @@ const Catalogo = () => {
       <div className="grade-produtos">
         {produtosFiltrados.length > 0 ? (
           produtosFiltrados.map((produto) => (
-            <div className="card-produto" key={produto.id || Math.random()}>
+            <div className="card-produto" key={produto.id}>
               <div className="imagem-produto-container">
                 <img 
                   src={produto.img1} 
@@ -98,12 +94,18 @@ const Catalogo = () => {
                   loading="lazy"
                   onError={(e) => {
                     e.target.src = '/images/placeholder.jpg';
+                    e.target.alt = 'Imagem não disponível';
                   }}
                 />
               </div>
               <h3 className="titulo-produto">{produto.titulo}</h3>
               <p className="preco-produto">{formatarPreco(produto.valor)}</p>
-              <button className="botao-ver">VER PRODUTO</button>
+              <button 
+                className="botao-ver" 
+                onClick={() => navigate(`/produto/${produto.id}`)}
+              >
+                VER PRODUTO
+              </button>
             </div>
           ))
         ) : (
