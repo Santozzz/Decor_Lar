@@ -12,18 +12,13 @@ import PrivateRoute from './assets/components/SISTEMA/PrivateRoute.jsx'
 
 
 // CLIENTE
-import Tela_Inicial_CLIENTE from './pages/CLIENTE/Tela_Inicial_CLIENTE.jsx'
 import PROD_PERSONALIZADOS from './pages/CLIENTE/PROD_PERSONALIZADOS.jsx'
 import Tela_Detalhes_Produtos from './pages/CLIENTE/Tela_Detalhes_Produtos.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    
-    element: 
-    <PrivateRoute>
-      <App />
-    </PrivateRoute>,
+    element: <App />
   },
 
    // ROTAS PROTEGIDAS DO SISTEMA
@@ -46,12 +41,6 @@ const router = createBrowserRouter([
     ),
   },
   // CLIENTE
-  {
-    path: "Home",
-    element: ( 
-      <Tela_Inicial_CLIENTE />
-    ),
-  },
   {
     path: "ProdutoPersonalizado",
     element: (

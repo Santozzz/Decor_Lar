@@ -1,12 +1,15 @@
 import './assets/styles/default/App.css'
 import './assets/styles/default/Reset.css'
+import Navbar_CLI from './assets/components/CLIENTE/Navbar/Navbar_CLI.jsx'
+import Catalogo from './assets/components/CLIENTE/Catalogo/Catalogo.jsx'
 
 
 function App() {
   return (
-    <>
-      <h1>Você esta na pagina principal</h1> 
-    </>
+    <div>
+        <Navbar_CLI/>
+        <Catalogo/>
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar_CLI from '../../assets/components/CLIENTE/Navbar_CLI.jsx'
-import Personalizados from '../../assets/components/CLIENTE/Personalizados.jsx'
+import Navbar_CLI from '../../assets/components/CLIENTE/Navbar/Navbar_CLI.jsx'
+import Personalizados from '../../assets/components/CLIENTE/Personalizados/Personalizados.jsx'
 
 
 const PROD_PERSONALIZADOS = () => {

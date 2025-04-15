@@ -1,4 +1,4 @@
-import "./../../styles/components/CLIENTE/Navbar_CLI.css";
+import styles from "./Navbar_CLI.module.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,40 +16,35 @@ const NavbarCLI = () => {
   };
 
   return (
-    <nav className="navbarCLI">
-      <div className="space">
-        {/* Container para logo e botão (mobile) */}
-        <div className="logo-and-button">
-          {/* Logo */}
-          <div className="logo" onClick={() => navigate("/Home")}>
+    <nav className={styles.navbarCli}>
+      <div className={styles.space}>
+        <div className={styles.logoAndButton}>
+          <div className={styles.logo} onClick={() => navigate("/")}>
             <p>Decor & Lar</p>
           </div>
 
-          {/* Botão de Produtos Personalizados (mobile) */}
           <button
-            className="personalizados mobile-only"
+            className={`${styles.personalizados} ${styles.mobileOnly}`}
             onClick={handleCustomProductsClick}
           >
             <p>Produto Personalizado</p>
           </button>
         </div>
 
-        {/* Barra de Pesquisa */}
-        <form className="pesquisar" onSubmit={handleSearch}>
+        <form className={styles.pesquisar} onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Pesquisar produtos..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit" className="btn-pesquisar">
+          <button type="submit" className={styles.btnPesquisar}>
             <i>Pesquisar</i>
           </button>
         </form>
 
-        {/* Botão de Produtos Personalizados (desktop) */}
         <button
-          className="personalizados desktop-only"
+          className={`${styles.personalizados} ${styles.desktopOnly}`}
           onClick={handleCustomProductsClick}
         >
           <p>Produto Personalizado</p>
