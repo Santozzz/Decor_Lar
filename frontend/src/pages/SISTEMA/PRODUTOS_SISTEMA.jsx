@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "./../../assets/components/SISTEMA/Navbar_SIS.jsx";
+import Navbar from "./../../assets/components/SISTEMA/Navbar/Navbar_SIS.jsx";
 import "./../../assets/styles/pages/SISTEMA/PRODUTOS_SISTEMA.css";
 
 const Produtos = () => {

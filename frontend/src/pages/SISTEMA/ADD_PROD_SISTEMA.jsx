@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Navbar_SIS from "../../assets/components/SISTEMA/Navbar_SIS.jsx";
+import Navbar_SIS from "../../assets/components/SISTEMA/Navbar/Navbar_SIS.jsx";
 import "./../../assets/styles/pages/SISTEMA/ADD_PROD_SISTEMA.css";
 import axios from 'axios'
 

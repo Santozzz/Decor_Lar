@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar_SIS from '../../assets/components/SISTEMA/Navbar_SIS.jsx'
+import Navbar_SIS from '../../assets/components/SISTEMA/Navbar/Navbar_SIS.jsx'
 
 
 function PEDIDOS_SISTEMA() {
