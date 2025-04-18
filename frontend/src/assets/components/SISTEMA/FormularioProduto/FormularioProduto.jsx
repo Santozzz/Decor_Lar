@@ -1,11 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import Navbar_SIS from "../../assets/components/SISTEMA/Navbar/Navbar_SIS.jsx";
-import "./../../assets/styles/pages/SISTEMA/ADD_PROD_SISTEMA.css";
-import axios from 'axios'
+import {React, useState } from 'react'
+import styles from './FormularioProduto.module.css'
+import axios from 'axios';
 
-function ADD_PROD_SISTEMA() {
-  const [mainImg, setMainImg] = useState(null);
+function FormularioProduto() {
+
+    const [mainImg, setMainImg] = useState(null);
   const [extraImg1, setExtraImg1] = useState(null);
   const [extraImg2, setExtraImg2] = useState(null);
 
@@ -29,7 +28,7 @@ function ADD_PROD_SISTEMA() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const fileMain = document.getElementById("main-img").files[0];
+    const fileMain = document.getElementById("mainImg").files[0];    
     const fileExtra1 = document.getElementById("extra1").files[0];
     const fileExtra2 = document.getElementById("extra2").files[0];
   
@@ -64,39 +63,37 @@ function ADD_PROD_SISTEMA() {
 
   return (
     <div>
-      <Navbar_SIS />
-      <div className="espaco"></div>
-      <div className="produto-container">
-        <div className="form-area">
-          <h2 className="ttl">ADICIONAR PRODUTOS</h2>
-          <div className="row">
-            <div className="col">
-              <div className="img">
-                <label htmlFor="main-img" className="img-label">
+        <div className={styles.produtoContainer}>
+        <div className={styles.formArea}>
+          <h2 className={styles.ttl}>ADICIONAR PRODUTOS</h2>
+          <div className={styles.row}>
+            <div className={styles.col}>
+              <div className={styles.img}>
+                <label htmlFor="mainImg" className={styles.imgLabel}>
                   {mainImg ? (
-                    <img src={mainImg} alt="Preview" className="preview" />
+                    <img src={mainImg} alt="Preview" className={styles.preview} />
                   ) : (
                     <>
-                      <span className="icon">&#128247;</span>
+                      <span className={styles.icon}>&#128247;</span>
                       <p>INSERIR IMAGEM</p>
                     </>
                   )}
                   <input
                     type="file"
-                    id="main-img"
+                    id="mainImg"
                     hidden
                     onChange={(e) => handleImageChange(e, setMainImg)}
                   />
                 </label>
               </div>
 
-              <div className="outras-imagens">
-                <label htmlFor="extra1" className="btn-img">
+              <div className={styles.outrasImagens}>
+                <label htmlFor="extra1" className={styles.btnImg}>
                   {extraImg1 ? (
                     <img
                       src={extraImg1}
                       alt="Extra 1"
-                      className="preview-mini"
+                      className={styles.previewMini}
                     />
                   ) : (
                     "+"
@@ -109,12 +106,12 @@ function ADD_PROD_SISTEMA() {
                   />
                 </label>
 
-                <label htmlFor="extra2" className="btn-img">
+                <label htmlFor="extra2" className={styles.btnImg}>
                   {extraImg2 ? (
                     <img
                       src={extraImg2}
                       alt="Extra 2"
-                      className="preview-mini"
+                      className={styles.previewMini}
                     />
                   ) : (
                     "+"
@@ -128,10 +125,10 @@ function ADD_PROD_SISTEMA() {
                 </label>
               </div>
             </div>
-            <div className="col">
-              <h2 className="ttl-form">Dados do Produto</h2>
-              <form className="form" onSubmit={handleSubmit}>
-                <select className="select-categoria" defaultValue="">
+            <div className={styles.col}>
+              <h2 className={styles.ttlForm}>Dados do Produto</h2>
+              <form className={styles.form} onSubmit={handleSubmit}>
+                <select className={styles.selectCategoria} defaultValue="">
                   <option value="" disabled>Categorias</option>
                   <option value="decoracao">Casa & Decoração</option>
                   <option value="nerd">Nerd</option>
@@ -144,7 +141,7 @@ function ADD_PROD_SISTEMA() {
                   id=""
                   placeholder="Descrição do Produto"
                 ></textarea>
-                <div className="btn">
+                <div className={styles.btn}>
                   <input type="submit" value="Adicionar Produtos" />
                 </div>
               </form>
@@ -153,7 +150,7 @@ function ADD_PROD_SISTEMA() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ADD_PROD_SISTEMA;
+export default FormularioProduto
