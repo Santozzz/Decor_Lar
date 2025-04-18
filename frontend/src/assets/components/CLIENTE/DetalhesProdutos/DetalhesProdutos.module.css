@@ -3,7 +3,6 @@
   margin: auto;
   padding: 2rem;
   flex-direction: column;
-  margin-top: 50px;
 }
 
 .ttl {
@@ -34,7 +33,7 @@
   object-fit: contain;
   border: 1px solid #eee;
   border-radius: 8px;
-  background-color: #b8b8b8;
+  background-color: #f7f7f7;
 }
 
 .miniaturas {
@@ -119,4 +118,14 @@
 
 .error {
   color: #d9534f;
+}
+
+
+@media (max-width: 768px) {
+  .produtoContainer{
+    margin-top: 30px;
+  }
+  .produtoContent{
+    flex-direction: column;
+  }
 }
