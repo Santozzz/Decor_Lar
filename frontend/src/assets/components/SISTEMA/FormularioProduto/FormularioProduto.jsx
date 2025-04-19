@@ -61,6 +61,26 @@ function FormularioProduto() {
     }
   };
 
+  const formatarMoeda = (valor) => {
+    // Remove tudo que não for número
+    const valorNumerico = valor.replace(/\D/g, '');
+
+    // Converte para número e divide por 100 para ter centavos
+    const valorFloat = parseFloat(valorNumerico) / 100;
+
+    // Se não tiver nada digitado, retorna vazio
+    if (isNaN(valorFloat)) {
+      return '';
+    }
+
+    // Formata para moeda brasileira
+    return valorFloat.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+  };
+
+
   return (
     <div>
         <div className={styles.produtoContainer}>
