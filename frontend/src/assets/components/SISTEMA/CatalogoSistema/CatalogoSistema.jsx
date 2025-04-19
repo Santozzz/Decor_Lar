@@ -9,7 +9,6 @@ const Catalogo = () => {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -62,6 +61,19 @@ const Catalogo = () => {
   if (loading) return <div className={styles.loading}>Carregando produtos...</div>;
   if (error) return <div className={styles.error}>Erro: {error}</div>;
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/produtos/${id}`);
+      // Depois de excluir, você pode atualizar a lista:
+      alert('Produto excluído com sucesso!');
+      // Aqui talvez você chame uma função para recarregar os produtos:
+      // fetchProdutos();
+    } catch (error) {
+      console.error('Erro ao excluir o produto:', error);
+      alert('Erro ao excluir o produto.');
+    }
+  };
+  
   return (
     <div className={styles.catalogoContainer}>
       <div className={styles.cabecalhoCatalogo}>
@@ -101,7 +113,7 @@ const Catalogo = () => {
               <h3 className={styles.tituloProduto}>{produto.titulo}</h3>
               <p className={styles.precoProduto}>{formatarPreco(produto.valor)}</p>
               <div className={styles.btnCrud}>
-                <button>Excluir</button>
+                <button onClick={() => handleDelete(produto.id)}>Excluir</button>
                 <button>Editar</button>
               </div>
             </div>
